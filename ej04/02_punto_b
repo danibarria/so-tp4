@@ -1,0 +1,14 @@
+b. Interpretar el código fuente y describir qué hace.
+
+los dos programas :
+    el cliente se conecta al servidor, y el servidor hace eco de lo que escribe el cliente
+
+cliente:
+    crea un socket, en el cual se van a comunicar con el servidor
+    si logra comunicarse, le envia mensajes al servidor hasta que termina el programa
+
+servidor:
+    crea un socket, en el cual se van a comunicar con el cliente
+    configura el socket, definiendo nombre y un puerto especifico 
+    el socket va a esperar conexiones entrantes de diferentes clientes
+    cuando un mensaje llegue correctamente, lo va a repetir a todos los clientes

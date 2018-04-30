@@ -1,0 +1,8 @@
+a. Investigar el funcionamiento y la utilidad de select().
+
+Sincroniza la multiplexacion de entrada/salida
+permite monitorear multiples file descriptor, esperando hasta que uno o mas pasen
+al estado "ready", para alguna operacion de entrada/salida.
+
+Su utilidad se ve en los modelos cliente servidor, como paginas web, o un servidor con varios
+cliente pidiendo acceso a un mismo archivo.

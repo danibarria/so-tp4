@@ -1,0 +1,38 @@
+c. Describir la secuencia de funciones necesarias 
+para establecer conexión entre un cliente y un servidor, 
+tanto del lado del cliente, como del lado del servidor.
+
+para el cliente:
+es indispensable
+crear el socket
+    sock = socket(AF_INET , SOCK_STREAM , 0);
+
+configurar la direccion/puerto del server
+    server.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server.sin_family = AF_INET;
+    server.sin_port = htons( 8888 );
+
+la conexion al servidor
+connect(sock , (struct sockaddr *)&server , sizeof(server))
+
+
+para el servidor:
+crear el socket
+    socket_desc = socket(AF_INET , SOCK_STREAM , 0);
+
+especificar las caracteristicas del socket
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons( 8888 );
+
+establecer la conexion entre nombre y direccion del server 
+    bind(socket_desc,(struct sockaddr *)&server , sizeof(server)
+
+escuchar al socket socket_desc
+    listen(socket_desc , 3);
+
+aceptar las conexiones 
+    client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c);    
+
+recibir los mensajes de un cliente
+    (read_size = recv(client_sock , client_message , 2000 , 0))
