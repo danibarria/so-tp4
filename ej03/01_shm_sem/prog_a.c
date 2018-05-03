@@ -5,6 +5,7 @@
 #include <semaphore.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include "utils.h"
 #define MAX_CHAR 51
 
 int main(){
@@ -20,12 +21,8 @@ int main(){
     if((semaforo = sem_open("/mutex", O_CREAT, 0700, 1)) == SEM_FAILED){
         perror("sem_open(semaforo)"); //creacion defensiva del semaforo
     }
-    sem_wait(semaforo); //aca bloqueo    
-    while((buff = getchar()) !=EOF){
-    	data[count] = buff; // lo que recibi por stdin
-        data[count+1] = EOF;   // pongo fin de linea luego del caracter
-        count++;    //aumento el apuntador a la siguiente direccion
-        // sem_post(semaforo);
-    }
+    sem_wait(semaforo); 
+    recibe_caracteres(data,MAX_CHAR);
     sem_post(semaforo);
+    // sem_close(semaforo);
 }
