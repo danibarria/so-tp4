@@ -14,7 +14,7 @@ int main(){
     char data[MAX_CHAR];
     int count =0;
 
-    mq = mq_open("/mqecho", O_WRONLY);//solo escribe
+    mq = mq_open("/mqecho", O_WRONLY |  O_CREAT );//solo escribe
     recibe_caracteres(data,MAX_CHAR);
     mq_send(mq, data, MAX_CHAR,0); //envia el mensaje
 }
